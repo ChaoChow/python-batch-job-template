@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.com/drive-genius/eng/{{project_name_kebab_case}}.git
+git remote add origin https://gitlab.com/drive-genius/eng/{{cookiecutter.project_name_kebab_case}}.git
 git branch -M develop
 git push -uf origin develop
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.com/drive-genius/eng/{{project_name_kebab_case}}/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.com/drive-genius/eng/{{cookiecutter.project_name_kebab_case}}/-/settings/integrations)
 
 ## Collaborate with your team
 
