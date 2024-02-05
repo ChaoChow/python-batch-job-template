@@ -1,8 +1,18 @@
 {
+  "project_name_kebab_case": "",
   "project_name_snake_case": "",
+  "tf_all_resources_prefix": "qt",
+  "state_s3_bucket_name": "terraform-state",
+  "lock_dynamo_table_name": "terraform-lock-table",
+  "lock_dynamo_key_prefix": "terraform/",
+  "aws_region": "us-east-1",
+  "aws_local_profile_name": "",
+  "secret_kms_key": "",
+  "job_timeout": 7200,
   "ecr_repo_host_url": "",
   "instruction_file_name": "",
   "project_description": "",
   "author_name": "",
-  "author_email": ""
+  "author_email": "",
+  "git_repo_url": ""
 }

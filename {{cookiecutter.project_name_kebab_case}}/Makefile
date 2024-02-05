@@ -37,8 +37,8 @@ precommit:
 run:
 	make aws-login
 	export ENVIRONMENT=local && \
-	export AWS_DEFAULT_REGION=us-east-1 && \
-	export AWS_PROFILE=drive_genius && \
+	export AWS_DEFAULT_REGION={{cookiecutter.aws_region}} && \
+	export AWS_PROFILE={{cookiecutter.aws_local_profile_name}} && \
 	poetry run python main.py ${INPUT_FILE_NAME}
 
 # Version Bumping
@@ -55,14 +55,14 @@ version-patch:
 # CICD
 
 aws-login:
-	aws sso login --profile drive_genius
+	aws sso login --profile {{cookiecutter.aws_local_profile_name}}
 
 docker-build:
 	docker build -f build/Dockerfile . -t ${APP_NAME}:${VERSION_TAG} --build-arg PACKAGE_NAME=${APP_NAME_SNAKE_CASE}
 
 ecr-push:
 	make aws-login
-	aws ecr get-login-password --region us-east-1 --profile drive_genius | docker login --username AWS --password-stdin ${ECR_REPO_URL}
+	aws ecr get-login-password --region us-east-1 --profile {{cookiecutter.aws_local_profile_name}} | docker login --username AWS --password-stdin ${ECR_REPO_URL}
 	docker tag ${APP_NAME}:${VERSION_TAG} ${ECR_REPO_URL}/${APP_NAME}:${VERSION_TAG}
 	docker push ${ECR_REPO_URL}/${APP_NAME}:${VERSION_TAG}
 
